@@ -12,21 +12,8 @@ public class Order implements Comparable<Order> {
     public int getOrderId() {
         return orderId;
     }
-
-    public String getOrderOrigin() {
-        return orderOrigin;
-    }
-
-    public void setOrderOrigin(String orderOrigin) {
-        this.orderOrigin = orderOrigin;
-    }
-
     public String getOrderDestination() {
         return orderDestination;
-    }
-
-    public void setOrderDestination(String orderDestination) {
-        this.orderDestination = orderDestination;
     }
 
     /**

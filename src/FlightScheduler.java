@@ -1,11 +1,8 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 public abstract class FlightScheduler {
     private List<Flight> flightList = new ArrayList<>();
-
 
     /**
      * Method to add a single flight object to the schedule

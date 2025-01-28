@@ -4,13 +4,12 @@ public class Main {
         String ORDERS_FILE = "coding-assigment-orders.json";
 
         FlightScheduler fs = new FlightSchedulerImpl(FLIGHT_FILE);
-        FlightInventoryService fis = new FlightInventoryServiceImpl(fs, FLIGHT_FILE);
+        FlightInventoryService fis = new FlightInventoryServiceImpl(fs, ORDERS_FILE);
 
         // User story 1
         fs.outputSchedule();
 
         //User Story 2
-        fis.processOrders(ORDERS_FILE);
         fis.outputOrders();
 
 

@@ -7,12 +7,20 @@ public class FlightInventoryServiceImpl extends FlightInventoryService{
     private final String ORIGIN =  "YUL";
     List<Order> orders = new ArrayList<>();
     SortedMap<Order, Flight> orderMap = new TreeMap<>();
+
+    /**
+     * An Implementation which takes in a json file.
+     * @param flightScheduler
+     * @param fileName
+     */
     public FlightInventoryServiceImpl(FlightScheduler flightScheduler, String fileName) {
         super(flightScheduler);
+        processOrders(fileName);
     }
 
     /**
-     * Adds all the orders from a given Json file into the orders list.
+     * Adds all the orders from a given Json file into the orders list and if a flight exists that can hanle it, will
+     * assign the order to the valid flight.
      * @param filePath of a file containing json
      */
     @Override
@@ -32,6 +40,12 @@ public class FlightInventoryServiceImpl extends FlightInventoryService{
         }
 
     }
+
+    /**
+     * Trnasforms a json string into a list of Order objects
+     * @param jsonOrders
+     * @return
+     */
     private List<Order> jsonToOrders(String jsonOrders) {
         jsonOrders = jsonOrders.substring(1, jsonOrders.length() - 1); // Remove the outer `{}`
 
@@ -66,7 +80,7 @@ public class FlightInventoryServiceImpl extends FlightInventoryService{
      * Assigns an order to a particular flight if available
      * @param order
      */
-    public void assignOrder(Order order) {
+    private void assignOrder(Order order) {
         if (!orderMap.containsKey(order)) {
             Flight flight = getAvailableFlight(order);
             if (flight != null) {
@@ -92,6 +106,9 @@ public class FlightInventoryServiceImpl extends FlightInventoryService{
         return null;
     }
 
+    /**
+     * Output formatter to print out the associated flight for each order we have loaded.
+     */
     @Override
     public void outputOrders() {
         for (Order order: this.orders) {

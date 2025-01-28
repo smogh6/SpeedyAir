@@ -1,11 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FlightSchedulerImpl extends FlightScheduler {
-
+    /**
+     * Specific Service which takes in input from a file and creates a store of all the flights scheduled.
+     * @param fileName
+     */
     public FlightSchedulerImpl(String fileName) {
         processFlights(fileName);
     }
